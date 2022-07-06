@@ -2,7 +2,7 @@ import cv2
 from pyzbar import pyzbar
 
 
-def read_barcodes(frame):
+def czytajkod(frame):
     barcodes = pyzbar.decode(frame)
     for barcode in barcodes:
         x, y, w, h = barcode.rect
@@ -20,7 +20,7 @@ def main():
     ret, frame = camera.read()
     while ret:
         ret, frame = camera.read()
-        frame = read_barcodes(frame)
+        frame = czytajkod(frame)
         cv2.imshow('Barcode/QR code reader', frame)
         if cv2.waitKey(1) & 0xFF == 27:
             break
